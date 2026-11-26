@@ -1,0 +1,34 @@
+Installing and building cuda-batch-canny
+========================================
+
+Requirements
+------------
+* An NVIDIA GPU and driver.
+* CUDA Toolkit 11.0 or newer (nvcc with C++17 support).
+* A C++17 host compiler (GCC 9+ or Clang 10+; for GCC 8 build with
+  `make LDLIBS=-lstdc++fs`).
+* GNU make and bash.
+* Optional: Python 3 with Pillow (montage images and SIPI TIFF conversion),
+  wget or curl (SIPI download), clang-format and cpplint (style checks).
+
+No third-party C++ libraries are needed: image I/O and flag parsing are
+implemented in src/.
+
+Linux (Ubuntu / Coursera lab)
+-----------------------------
+    git clone <this repository> cuda-batch-canny
+    cd cuda-batch-canny
+    make                 # SM is auto-detected via nvidia-smi
+    ./run.sh             # generates data, runs every case, writes proof/
+
+If the toolkit is not under /usr/local/cuda:
+
+    make CUDA_PATH=/opt/cuda
+
+To target a specific GPU architecture (e.g. Tesla T4 = 7.5):
+
+    make SM=75
+
+Windows
+-------
+Use WSL2 with the CUDA-on-WSL driver and follow the Linux steps.

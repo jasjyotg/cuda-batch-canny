@@ -1,0 +1,14 @@
+# Build products
+obj/
+bin/canny_batch
+bin/generate_synthetic
+
+# Datasets are generated (make data) or downloaded (scripts/fetch_sipi.sh)
+data/synthetic_*/
+data/sipi/
+data/sipi_raw/
+
+# Full-resolution outputs are large; the curated evidence lives in proof/
+output/
+
+__pycache__/
